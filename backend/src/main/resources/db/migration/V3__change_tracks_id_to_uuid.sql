@@ -1,0 +1,14 @@
+ALTER TABLE tracks
+ADD COLUMN new_id UUID NOT NULL DEFAULT gen_random_uuid();
+
+ALTER TABLE tracks
+DROP CONSTRAINT tracks_pkey;
+
+ALTER TABLE tracks
+DROP COLUMN id;
+
+ALTER TABLE tracks
+RENAME COLUMN new_id TO id;
+
+ALTER TABLE tracks
+ADD PRIMARY KEY (id);

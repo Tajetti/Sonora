@@ -3,17 +3,15 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-        <Text>Olá, mundo!</Text>
+    <View style={styles.header}>
+
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  header: { //header com config na esquerda e a foto de perfil na direita
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   }
 });

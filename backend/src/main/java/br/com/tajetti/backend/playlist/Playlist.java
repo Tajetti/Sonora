@@ -1,11 +1,10 @@
-package br.com.tajetti.backend.track;
+package br.com.tajetti.backend.playlist;
 
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
-import java.time.OffsetDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,22 +14,21 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity 
-@Table(name = "tracks")
-public class Track {
+@Table (name = "playlists")
+public class Playlist {
     @Id 
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    private String title;
+    private String name;
 
-    @Column (name = "duration_seconds")
-    private Integer durationSeconds;
+    private String description;
 
-    @CreationTimestamp 
+    @CreationTimestamp
     @Column (name = "created_at", updatable = false)
     private OffsetDateTime createdAt;
 
     @UpdateTimestamp 
-    @Column(name = "updated_at")
+    @Column (name = "updated_at")
     private OffsetDateTime updatedAt;
 }

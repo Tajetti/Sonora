@@ -29,6 +29,10 @@ sonora/
 └── README.md
 ```
 
+## Modelo de dados
+
+![Diagrama do banco de dados do Sonora](image/drawsql.webp)
+
 ## Objetivo do projeto
 
 O Sonora está sendo desenvolvido de forma progressiva para estudar e aplicar conceitos usados em projetos reais, como:

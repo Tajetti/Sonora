@@ -1,12 +1,12 @@
-package br.com.tajetti.backend.relations;
+package br.com.tajetti.backend.relations.entity;
 
 import java.util.UUID;
 import java.time.OffsetDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import br.com.tajetti.backend.playlist.Playlist;
-import br.com.tajetti.backend.track.Track;
+import br.com.tajetti.backend.playlist.entity.Playlist;
+import br.com.tajetti.backend.track.entity.Track;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

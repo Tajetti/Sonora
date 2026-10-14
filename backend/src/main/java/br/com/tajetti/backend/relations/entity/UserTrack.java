@@ -1,4 +1,4 @@
-package br.com.tajetti.backend.relations;
+package br.com.tajetti.backend.relations.entity;
 
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -6,8 +6,8 @@ import java.util.UUID;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import br.com.tajetti.backend.track.Track;
-import br.com.tajetti.backend.user.User;
+import br.com.tajetti.backend.track.entity.Track;
+import br.com.tajetti.backend.user.entity.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -19,10 +19,12 @@ public class TrackService {
     
     public List<SearchTrackResponseDTO> searchTracks(String query, int quantityMusic) {
 
-        if(quantityMusic <= 0) {
-            throw new IllegalArgumentException("A quantidade de músicas deve ser maior que zero.");
-        } else if(quantityMusic > 15) {
-            throw new IllegalArgumentException("A quantidade de músicas deve ser menor ou igual a 15.");
+        if(query == null || query.isBlank()) {
+            throw new IllegalArgumentException("A pesquisa não pode ser vazia");
+        } else if(quantityMusic <= 0) {
+            throw new IllegalArgumentException("A quantidade de músicas deve ser maior que zero");
+        } else if(quantityMusic > 20) {
+            throw new IllegalArgumentException("A quantidade de músicas deve ser menor ou igual a 20");
         }
 
         List<SearchTrackResponseDTO> tracks = new ArrayList<>();

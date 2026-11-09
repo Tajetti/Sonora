@@ -14,18 +14,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController 
-@RequestMapping("/api/tracks")
+@RequestMapping("/api/v1/tracks")
 public class TrackController {
-    
+
     private final TrackService trackService;
 
     public TrackController(TrackService trackService) {
         this.trackService = trackService;
     }
 
-   @GetMapping("/search")
-   public List<SearchTrackResponseDTO> getTracks(@RequestParam String query, @RequestParam(defaultValue = "5") int numberOfTracks) {
+    @GetMapping("/search")
+    public List<SearchTrackResponseDTO> getTracks(@RequestParam String query, @RequestParam(defaultValue = "5") int numberOfTracks) {
        return trackService.searchTracks(query, numberOfTracks);
-   }
-   
+    }
+
 }

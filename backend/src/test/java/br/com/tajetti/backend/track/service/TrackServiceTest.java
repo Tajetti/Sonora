@@ -3,30 +3,77 @@ package br.com.tajetti.backend.track.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import br.com.tajetti.backend.track.dto.response.SearchTrackResponseDTO;
 
+@ExtendWith (MockitoExtension.class)
 public class TrackServiceTest {
-    TrackService trackService = new TrackService();
 
-    @Test 
-    void shouldExecuteYtDlpAndReturnFiveTracks(){
-        List<SearchTrackResponseDTO> execution = trackService.searchTracks("Leonardo", 5);
+    @Mock 
+    private YtDlpService ytDlpService;
+
+    @InjectMocks 
+    private TrackService trackService;
+
+    @Test
+    void shouldReturnFiveTracks() {
+        List<SearchTrackResponseDTO> tracks = new ArrayList<>();
+
+        for (int i = 0; i < 5; i++) {
+            SearchTrackResponseDTO track = new SearchTrackResponseDTO();
+            track.setTitle("Música " + i);
+            track.setChannelName("Canal teste");
+
+            tracks.add(track);
+        }
+
+        when(ytDlpService.searchTracks("Leonardo", 5))
+            .thenReturn(tracks);
+
+        List<SearchTrackResponseDTO> execution =
+            trackService.searchTracks("Leonardo", 5);
 
         assertEquals(5, execution.size());
         assertNotNull(execution.get(0).getTitle());
         assertNotNull(execution.get(0).getChannelName());
+
+        verify(ytDlpService).searchTracks("Leonardo", 5);
     }
 
     @Test 
     void shouldExecuteYtDlpAndReturnTwentyTracks(){
-        List<SearchTrackResponseDTO> execution = trackService.searchTracks("Leonardo", 20);
+        List<SearchTrackResponseDTO> tracks = new ArrayList<>();
+
+        for (int i = 0; i < 20; i++) {
+            SearchTrackResponseDTO track = new SearchTrackResponseDTO();
+            track.setTitle("Música " + i);
+            track.setChannelName("Canal teste");
+
+            tracks.add(track);
+        }
+
+        when(ytDlpService.searchTracks("Leonardo", 20))
+            .thenReturn(tracks);
+
+        List<SearchTrackResponseDTO> execution =
+            trackService.searchTracks("Leonardo", 20);
 
         assertEquals(20, execution.size());
+        assertNotNull(execution.get(0).getTitle());
+        assertNotNull(execution.get(0).getChannelName());
+
+        verify(ytDlpService).searchTracks("Leonardo", 20);
     }
 
     @Test 
